@@ -6,6 +6,7 @@ from pyperclip import copy
 from time import sleep, time
 from urllib import parse
 from pyotp import TOTP
+from sys import exit
 
 # initializes rofi
 rofi_instance = Rofi()
@@ -70,8 +71,12 @@ def generate_otp_code(secret):
 # then wait 10 seconds and clear the clipboard
 def copy_entry(credential_entry):
     copy(credential_entry)
-    sleep(13)
+    sleep(10)
     copy("")
+
+
+def die():
+    exit()
 
 
 while True:
@@ -87,7 +92,10 @@ while True:
         key1=("Alt+u", "Copy username"),
         key2=("Alt+p", "Copy password"),
         key3=("Alt+t", "Copy TOTP"),
+        key4=("Alt+x", "Exit"),
     )
+
+    print(f"index_entry: {index_entry} key_entry: {key_entry}")
 
     if index_entry is None:
         rofi_instance.exit_with_error("No entry was selected")
@@ -103,5 +111,7 @@ while True:
         secret = get_secret_from_uri(selected_entry.otp)
         code = generate_otp_code(secret)
         copy_entry(code)
+    if key_entry == 4:
+        die()
 
     last_time_access = time()
