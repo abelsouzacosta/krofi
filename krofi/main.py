@@ -3,10 +3,9 @@ from os import getenv
 from pykeepass import PyKeePass
 from subprocess import run
 from pyperclip import copy
-from time import sleep
+from time import sleep, time
 from urllib import parse
 from pyotp import TOTP
-from time import sleep, time
 
 # initializes rofi
 rofi_instance = Rofi()
@@ -27,7 +26,7 @@ last_time_access = 0
 database_path = getenv("KPDB")
 
 
-# funciton will set the variables to deal with
+# function will set the variables to deal with
 # the database
 def open_keepass_database():
     global keepass_database, last_time_access
