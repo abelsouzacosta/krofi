@@ -38,8 +38,15 @@ for entry in groups[index_group].entries:
     entries_options.append(entry.title)
 
 index_entry, key_entry = rofi_instance.select(
-    f"Entries at {groups[index_group]}", options=entries_options
+    f"Entries at {groups[index_group]}",
+    options=entries_options,
+    key1=("Alt+u", "Copy username"),
+    key2=("Alt+p", "Copy password"),
+    key3=("Alt+t", "Copy TOTP"),
 )
 
 print(f"index entry: {index_entry}, key_entry: {key_entry}")
+
+if key_entry == 1:
+    print(f"{groups[index_group].entries[index_entry].username}")
 # get a specific entry from the database
