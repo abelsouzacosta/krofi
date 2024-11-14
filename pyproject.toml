@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "krofi"
 version = "0.1.0"
-description = ""
+description = "A simple Keepass rofi-based password clip tool"
 authors = ["abelsouzacosta <abelsouzacostajunior@proton.me>"]
 readme = "README.md"
 
