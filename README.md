@@ -15,4 +15,7 @@ to select for a specific instance. Then you can press the following keys:
 
 After pressing one of the key combinations above you will have the respective credential
 in your clipboard and the interface will close to re-open again after 10 seconds, allowing
-you to copy another credential.
+you to copy another credential, after this 10 seconds the credentials will be cleared from
+the clipboard.
+
+You can exit from krofi after pressing Alt+x
