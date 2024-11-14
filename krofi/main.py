@@ -47,6 +47,8 @@ def open_keepass_database():
 
 # will get the secret of the otp uri attribute
 def get_secret_from_uri(uri):
+    if not uri:
+        rofi_instance.exit_with_error("This entry does not have a TOTP code")
     # Will return a parsed url
     parsed_uri = parse.urlparse(uri)
     # Get the parameters of the uri parsing them into a dictionary
