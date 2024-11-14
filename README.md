@@ -19,3 +19,21 @@ you to copy another credential, after this 10 seconds the credentials will be cl
 the clipboard.
 
 You can exit from krofi after pressing Alt+x
+
+## Install
+
+In order to install this package you must have [poetry](https://python-poetry.org/) installed.
+
+1 - Clone this repository
+
+`git clone git@github.com:abelsouzacosta/krofi.git && cd krofi`
+
+2 - Install all dependencies
+
+`poetry install`
+
+3 - Compile
+
+`poetry run pyinstaller --onefile --add-data "/path/to/rofi/config:rofi_config" krofi/main.py`
+
+This will create a `dist` directory with a `main` script inside it that you can execute
