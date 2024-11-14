@@ -1,17 +1,17 @@
 [tool.poetry]
 name = "krofi"
 version = "0.1.0"
-description = "A simple Keepass rofi-based password clip tool"
+description = "A simple Keepass rofi-based password clipper tool"
 authors = ["abelsouzacosta <abelsouzacostajunior@proton.me>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.14"
 pykeepass = "^4.1.0.post1"
 python-rofi = "^1.0.1"
-pendulum = "^3.0.0"
 pyperclip = "^1.9.0"
 pyotp = "^2.9.0"
+pyinstaller = "^6.11.1"
 
 
 [build-system]
