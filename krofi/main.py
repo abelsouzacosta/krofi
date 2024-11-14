@@ -60,7 +60,7 @@ selected_entry = selected_group.entries[index_entry]
 print(f"index entry: {index_entry}, key_entry: {key_entry}")
 
 
-# wil get the secret of the otp uri attribute
+# will get the secret of the otp uri attribute
 def get_secret_from_uri(uri):
     # Will return a parsed url
     parsed_uri = parse.urlparse(uri)
@@ -86,4 +86,4 @@ if key_entry == 2:
 if key_entry == 3:
     secret = get_secret_from_uri(selected_entry.otp)
     code = generate_otp_code(secret)
-    print(f"{code}")
+    copy_entry(code)
