@@ -2,8 +2,19 @@ from rofi import Rofi
 from os import getenv
 from pykeepass import PyKeePass
 from subprocess import run
+from pyperclip import copy
+from time import sleep
 
 rofi_instance = Rofi()
+
+
+# Will copy the credential to the clipboard
+# then wait 10 seconds and clear the clipboard
+def copy_entry(credential_entry):
+    copy(credential_entry)
+    sleep(10)
+    copy("")
+
 
 # command to run in subprocess
 command = ["rofi", "-dmenu", "-p", "Enter database password: ", "-password"]
@@ -26,16 +37,14 @@ except Exception:
 # get all groups from the database
 groups = keepass_database.groups
 
-group_options = []
-for group in groups:
-    group_options.append(group.name)
+group_options = [group.name for group in groups]
 
 index_group, key_group = rofi_instance.select("Groups", options=group_options)
-# get all entries from the group
 
-entries_options = []
-for entry in groups[index_group].entries:
-    entries_options.append(entry.title)
+# get the selected group in the previous step
+selected_group = groups[index_group]
+# get all entries from the group
+entries_options = [entry.title for entry in selected_group.entries]
 
 index_entry, key_entry = rofi_instance.select(
     f"Entries at {groups[index_group]}",
@@ -45,8 +54,8 @@ index_entry, key_entry = rofi_instance.select(
     key3=("Alt+t", "Copy TOTP"),
 )
 
+selected_entry = selected_group.entries[index_entry]
 print(f"index entry: {index_entry}, key_entry: {key_entry}")
 
 if key_entry == 1:
-    print(f"{groups[index_group].entries[index_entry].username}")
-# get a specific entry from the database
+    copy_entry(selected_entry.username)

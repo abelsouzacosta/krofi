@@ -476,6 +476,16 @@ pycryptodomex = ">=3.6.2"
 test = ["pyotp"]
 
 [[package]]
+name = "pyperclip"
+version = "1.9.0"
+description = "A cross-platform clipboard module for Python. (Only handles plain text for now.)"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyperclip-1.9.0.tar.gz", hash = "sha256:b7de0142ddc81bfc5c7507eea19da920b92252b548b96186caf94a5e2527d310"},
+]
+
+[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 description = "Extensions to the standard Python datetime module"
@@ -525,4 +535,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "f13549c4bb2e8802ff62f32d010c8d5e4075d1710febb654ea3777aaab7ed945"
+content-hash = "2f28c98f991ff57766990aa951cfd4e661989b9a3c31b2c4c7525a8d1e07b554"
