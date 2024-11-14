@@ -51,7 +51,6 @@ index_entry, key_entry = rofi_instance.select(
     options=entries_options,
     key1=("Alt+u", "Copy username"),
     key2=("Alt+p", "Copy password"),
-    key3=("Alt+t", "Copy TOTP"),
 )
 
 selected_entry = selected_group.entries[index_entry]
