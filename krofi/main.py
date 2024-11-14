@@ -59,3 +59,5 @@ print(f"index entry: {index_entry}, key_entry: {key_entry}")
 
 if key_entry == 1:
     copy_entry(selected_entry.username)
+if key_entry == 2:
+    copy_entry(selected_entry.password)
