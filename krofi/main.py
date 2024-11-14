@@ -4,6 +4,8 @@ from pykeepass import PyKeePass
 from subprocess import run
 from pyperclip import copy
 from time import sleep
+from urllib import parse
+from pyotp import TOTP
 
 rofi_instance = Rofi()
 
@@ -51,12 +53,37 @@ index_entry, key_entry = rofi_instance.select(
     options=entries_options,
     key1=("Alt+u", "Copy username"),
     key2=("Alt+p", "Copy password"),
+    key3=("Alt+t", "Copy TOTP"),
 )
 
 selected_entry = selected_group.entries[index_entry]
 print(f"index entry: {index_entry}, key_entry: {key_entry}")
 
+
+# wil get the secret of the otp uri attribute
+def get_secret_from_uri(uri):
+    # Will return a parsed url
+    parsed_uri = parse.urlparse(uri)
+    # Get the parameters of the uri parsing them into a dictionary
+    params = parse.parse_qs(parsed_uri.query)
+    # get the secret
+    secret = params.get("secret", [None])[0]
+    return secret
+
+
+# will receive the secret of the url given to 'get_secret_from_uri'
+# and will generate an otp code
+def generate_otp_code(secret):
+    totp = TOTP(secret)
+    code = totp.now()
+    return code
+
+
 if key_entry == 1:
     copy_entry(selected_entry.username)
 if key_entry == 2:
     copy_entry(selected_entry.password)
+if key_entry == 3:
+    secret = get_secret_from_uri(selected_entry.otp)
+    code = generate_otp_code(secret)
+    print(f"{code}")
