@@ -69,7 +69,7 @@ def generate_otp_code(secret):
 # then wait 10 seconds and clear the clipboard
 def copy_entry(credential_entry):
     copy(credential_entry)
-    sleep(10)
+    sleep(13)
     copy("")
 
 
